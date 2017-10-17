@@ -1,10 +1,18 @@
-angular.module('AddCtrl', ['ExpenseService']).controller('AddController', function ($scope, Expense, $rootScope, $location) {
+angular.module('AddCtrl', ['ExpenseService']).controller('AddController', function ($scope, Expense, $rootScope, $location, $route) {
 
-    $scope.expense = {
-        amount: '12',
-        category: 'test',
-        amount: 0
-    };
+    $scope.expense = {};
+    $scope.isEdit = false;
+
+    if ($route.current.pathParams.id) {
+        $rootScope.loading = true;
+        $scope.isEdit = true;
+        var id = $route.current.pathParams.id;
+        Expense.getOne(id).then(function (res) {
+            $scope.expense = res.data;
+            $scope.expense.date = new Date(res.data.date);
+            $rootScope.loading = false;
+        });
+    }
 
     $scope.addExpense = function () {
         $rootScope.loading = true;

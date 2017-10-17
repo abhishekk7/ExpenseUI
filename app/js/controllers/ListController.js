@@ -1,4 +1,4 @@
-angular.module('ListCtrl', ['ExpenseService']).controller('ListController', function ($scope, Expense, $rootScope) {
+angular.module('ListCtrl', ['ExpenseService']).controller('ListController', function ($scope, Expense, $rootScope, $location) {
     $rootScope.loading = true;
 
     $scope.expenseList = [];
@@ -18,5 +18,9 @@ angular.module('ListCtrl', ['ExpenseService']).controller('ListController', func
                 $rootScope.loading = false;
             });
         }
+    };
+
+    $scope.edit = function (id) {
+        $location.url('/editExpense/' + id);
     };
 });

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="jumbotron">
         <div class="float-left">
-            <h1 class="display-3">Add Expense</h1>
+            <h1 class="display-3">{{(isEdit==true)?'Edit':'Add'}} Expense</h1>
         </div>
     </div>
     <div class="row">
@@ -40,7 +40,7 @@
 
                 <div class="form-group row text-center">
                     <div class="col">
-                        <button ng-click="addExpense()" class="btn btn-lg btn-info">Add</button>
+                        <button ng-click="addExpense()" class="btn btn-lg btn-info">{{(isEdit==true)?'Save':'Add'}}</button>
                     </div>
                     <div class="col">
                         <button ng-click="cancel()" class="btn btn-lg btn-secondary">Cancel</button>

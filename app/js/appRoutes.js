@@ -15,7 +15,13 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', '
 
         // add new expense 
         .when('/addExpense', {
-            templateUrl: 'views/addExpense.html',
+            templateUrl: 'views/addEditExpense.html',
+            controller: 'AddController'
+        })
+
+        //edit expense
+        .when('/editExpense/:id', {
+            templateUrl: 'views/addEditExpense.html',
             controller: 'AddController'
         })
 
