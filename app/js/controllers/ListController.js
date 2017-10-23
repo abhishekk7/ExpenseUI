@@ -2,9 +2,12 @@ angular.module('ListCtrl', ['ExpenseService']).controller('ListController', func
     $rootScope.loading = true;
 
     $scope.expenseList = [];
+    $scope.total = 0;
+
     Expense.get().then(function (response) {
         console.log(response.data);
         $scope.expenseList = response.data;
+        _calculateTotal();
     }).finally(function () {
         $rootScope.loading = false;
     });
@@ -12,6 +15,7 @@ angular.module('ListCtrl', ['ExpenseService']).controller('ListController', func
     $scope.delete = function (expense) {
         if (confirm("Are you sure you want to delete?") == true) {
             $rootScope.loading = true;
+            $scope.total -= expense.amount;
             Expense.delete(expense._id).then(function () {
                 var index = $scope.expenseList.indexOf(expense);
                 $scope.expenseList.splice(index, 1);
@@ -23,4 +27,10 @@ angular.module('ListCtrl', ['ExpenseService']).controller('ListController', func
     $scope.edit = function (id) {
         $location.url('/editExpense/' + id);
     };
+
+    function _calculateTotal() {
+        $scope.expenseList.forEach(function (element) {
+            $scope.total += element.amount;
+        }, this);
+    }
 });

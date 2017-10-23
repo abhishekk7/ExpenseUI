@@ -1,4 +1,4 @@
-angular.module('AddCtrl', ['ExpenseService']).controller('AddController', function ($scope, Expense, $rootScope, $location, $route) {
+angular.module('AddCtrl', ['ExpenseService']).controller('AddController', function ($scope, Expense, $rootScope, $route, $window) {
 
     $scope.expense = {};
     $scope.isEdit = false;
@@ -20,11 +20,11 @@ angular.module('AddCtrl', ['ExpenseService']).controller('AddController', functi
             $rootScope.loading = false;
 
         });
-        $location.url('/list');
+        $window.location.href = '/list';
     }
 
     $scope.cancel = function () {
-        $location.url('/list');
+        $window.location.href = '/list';
     }
 
 });
