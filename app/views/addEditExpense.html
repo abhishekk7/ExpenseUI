@@ -40,7 +40,8 @@
 
                 <div class="form-group row text-center">
                     <div class="col">
-                        <button ng-click="addExpense()" class="btn btn-lg btn-info">{{(isEdit==true)?'Save':'Add'}}</button>
+                        <button ng-click="addExpense()" class="btn btn-lg btn-info" ng-if="!isEdit">Add</button>
+                        <button ng-click="saveExpense()" class="btn btn-lg btn-info" ng-if="isEdit">Save</button>
                     </div>
                     <div class="col">
                         <button ng-click="cancel()" class="btn btn-lg btn-secondary">Cancel</button>

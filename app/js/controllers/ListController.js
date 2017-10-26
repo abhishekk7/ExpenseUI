@@ -5,7 +5,6 @@ angular.module('ListCtrl', ['ExpenseService']).controller('ListController', func
     $scope.total = 0;
 
     Expense.get().then(function (response) {
-        console.log(response.data);
         $scope.expenseList = response.data;
         _calculateTotal();
     }).finally(function () {

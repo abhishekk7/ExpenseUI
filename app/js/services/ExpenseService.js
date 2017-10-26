@@ -12,6 +12,9 @@ angular.module('ExpenseService', []).service('Expense', ['$http', function ($htt
         },
         getOne: function (id) {
             return $http.get('http://192.168.0.23:9000/api/v1/expenses/' + id);
+        },
+        save: function (expense, id) {
+            return $http.put('http://192.168.0.23:9000/api/v1/expenses/' + id, expense);
         }
     }
 }]);
