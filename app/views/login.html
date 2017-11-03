@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-4 card p-4 mx-auto my-4">
         <h4 class="text-center text-muted">Log into Expense</h4>
-        <form>
+        <form ng-submit="login()">
             <div class="form-group mx-4 mt-4">
                 <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="email address" ng-model="email">
             </div>
@@ -10,7 +10,7 @@
             </div>
 
             <div class="mx-4 my-2 text-center">
-                <button type="submit" class="btn btn-primary" ng-click="login()">Log in
+                <button type="submit" class="btn btn-primary">Log in
                     <i class="fa fa-sign-in" aria-hidden="true"></i>
                 </button>
             </div>

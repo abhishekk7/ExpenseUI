@@ -6,7 +6,8 @@ angular.module('LoginCtrl', ['AuthenticationService']).controller('LoginControll
             if (response.data) {
                 var user = response.data;
                 if (user.password == $scope.password) {
-                    Authentication.setCredentials(user.email);
+                    delete user.password;
+                    Authentication.setCredentials(user);
                     $location.path('/home');
                 } else {
                     $scope.user = "Invalid Username/Password";

@@ -1,17 +1,12 @@
-angular.module('AuthenticationService', []).service('Authentication', ['$http', '$cookies', '$rootScope', function ($http, $cookies, $rootScope) {
+angular.module('AuthenticationService', []).service('Authentication', ['$http', '$cookies', '$rootScope', 'Constants', function ($http, $cookies, $rootScope, Constants) {
     // TODO: Add config file for base urls
     return {
-        all: function () {
-            return $http.get('http://localhost:9000/api/v1/users');
-        },
         login: function (email) {
-            return $http.get('http://localhost:9000/api/v1/login' + '?email=' + email);
+            return $http.get(Constants.apiBaseUrl + '/login' + '?email=' + email);
         },
-        setCredentials: function (email) {
+        setCredentials: function (user) {
             $rootScope.globals = {
-                currentUser: {
-                    email: email
-                }
+                currentUser: user
             };
 
             var cookieExp = new Date();
@@ -21,6 +16,9 @@ angular.module('AuthenticationService', []).service('Authentication', ['$http', 
         clearCredentials: function () {
             $rootScope.globals = {};
             $cookies.remove('globals');
+        },
+        getCurrentUser: function () {
+            return $rootScope.globals.currentUser;
         }
     }
 }]);

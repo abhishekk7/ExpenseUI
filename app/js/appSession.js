@@ -15,11 +15,8 @@ angular.module('appSession', []).run(['$rootScope', '$location', '$cookies', '$h
                 editExpense: 'list'
 
             }
-
-            $rootScope.$on('$routeChangeStart', function (event, next, current) {
-                var page = next.$$route.originalPath.split('/');
-                $rootScope.currentPage = pages[page[1]];
-            });
+            var page = next.split('/');
+            $rootScope.currentPage = pages[page[page.length - 1]];
         }
     });
 }]);

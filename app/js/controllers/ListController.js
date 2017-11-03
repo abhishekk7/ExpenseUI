@@ -1,10 +1,10 @@
-angular.module('ListCtrl', ['ExpenseService']).controller('ListController', function ($scope, Expense, $rootScope, $location) {
+angular.module('ListCtrl', ['ExpenseService', 'AuthenticationService']).controller('ListController', function ($scope, Expense, Authentication, $rootScope, $location) {
     $rootScope.loading = true;
 
     $scope.expenseList = [];
     $scope.total = 0;
 
-    Expense.get().then(function (response) {
+    Expense.getByUser(Authentication.getCurrentUser()._id).then(function (response) {
         $scope.expenseList = response.data;
         _calculateTotal();
     }).finally(function () {
