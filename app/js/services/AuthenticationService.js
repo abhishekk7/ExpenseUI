@@ -21,4 +21,5 @@ angular.module('AuthenticationService', []).service('Authentication', ['$http', 
             return $rootScope.globals.currentUser;
         }
     }
+    
 }]);
