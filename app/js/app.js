@@ -1,1 +1,1 @@
-var expenseApp = angular.module('ExpenseApp', ['ngRoute', 'ngCookies', 'appRoutes', 'appSession', 'MainCtrl', 'ListCtrl', 'AddCtrl', 'LoginCtrl', 'Constants']);
+var expenseApp = angular.module('ExpenseApp', ['ngRoute', 'ngCookies', 'appRoutes', 'appSession', 'MainCtrl', 'ListCtrl', 'AddCtrl', 'LoginCtrl', 'RegisterCtrl', 'Constants']);

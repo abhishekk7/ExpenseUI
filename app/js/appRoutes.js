@@ -32,6 +32,12 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider',
                 controller: 'LoginController'
             })
 
+            //register new user
+            .when('/register', {
+                templateUrl: 'views/register.html',
+                controller: 'RegisterController'
+            })
+
             //otherwise
             .otherwise({
                 redirectTo: '/home'
