@@ -1,4 +1,4 @@
-angular.module('ListCtrl', ['ExpenseService', 'AuthenticationService']).controller('ListController', function ($scope, Expense, Authentication, $rootScope, $location) {
+angular.module('ListCtrl', ['ExpenseService', 'AuthenticationService', 'FlashService']).controller('ListController', function ($scope, Expense, Authentication, Flash, $rootScope, $location) {
     $rootScope.loading = true;
 
     $scope.expenseList = [];
@@ -19,6 +19,7 @@ angular.module('ListCtrl', ['ExpenseService', 'AuthenticationService']).controll
                 var index = $scope.expenseList.indexOf(expense);
                 $scope.expenseList.splice(index, 1);
                 $rootScope.loading = false;
+                Flash.info(expense.category + '-' + expense.description + ' deleted successfully!');
             });
         }
     };

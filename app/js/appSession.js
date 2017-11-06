@@ -1,6 +1,6 @@
 angular.module('appSession', []).run(['$rootScope', '$location', '$cookies', '$http', function ($rootScope, $location, $cookies, $http) {
     $rootScope.globals = $cookies.getObject('globals') || {};
-    console.log('run');
+    
     $rootScope.$on('$locationChangeStart', function (event, next, current) {
         // redirect to login page if not logged in and trying to access a restricted page
         var restrictedPage = $.inArray($location.path(), ['/login', '/register']) === -1;

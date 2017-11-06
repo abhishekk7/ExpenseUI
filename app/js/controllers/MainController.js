@@ -1,4 +1,6 @@
-angular.module('MainCtrl', ['AuthenticationService']).controller('MainController', function ($scope, Authentication, $location) {
+angular.module('MainCtrl', ['AuthenticationService']).controller('MainController', function ($rootScope, $scope, Authentication, $location) {
+    $rootScope.flashMsg = {};
+    
     $scope.logout = function () {
         Authentication.clearCredentials();
         $location.path('/');

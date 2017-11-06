@@ -1,4 +1,4 @@
-angular.module('LoginCtrl', ['AuthenticationService']).controller('LoginController', function ($scope, $rootScope, Authentication, $location) {
+angular.module('LoginCtrl', ['AuthenticationService','FlashService']).controller('LoginController', function ($scope, $rootScope, Authentication, Flash, $location) {
 
     $scope.login = function () {
         $rootScope.loading = true;
@@ -10,10 +10,10 @@ angular.module('LoginCtrl', ['AuthenticationService']).controller('LoginControll
                     Authentication.setCredentials(user);
                     $location.path('/home');
                 } else {
-                    $scope.user = "Invalid Username/Password";
+                    Flash.error('Invalid Username/Password')
                 }
             } else {
-                $scope.user = "Invalid Username/Password";
+                Flash.error('Invalid Username/Password')
             }
             $rootScope.loading = false;
         });
