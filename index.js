@@ -2,7 +2,7 @@ const express = require('express');
 var app = express();
 var morgan = require('morgan');
 
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 app.use(morgan('tiny'));
 
