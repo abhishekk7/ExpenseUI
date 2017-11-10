@@ -18,6 +18,9 @@ angular.module('ExpenseService', []).service('Expense', ['$http', 'Constants', f
         },
         save: function (expense, id) {
             return $http.put(Constants.apiBaseUrl + '/expenses/' + id, expense);
+        },
+        getByCategory: function () {
+            return $http.get(Constants.apiBaseUrl + '/expenses/group');
         }
     }
 }]);
